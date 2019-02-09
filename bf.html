@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Brainfuck in the browser</title>
+        <script type="text/javascript" src="bf.js"></script>
+        <script type="text/javascript">
+            function execute() {
+                var output = document.getElementById('output')
+                output.textContent = ""
+                var bf = new Bf({
+                    write: (c)=> output.textContent += String.fromCharCode(c)
+                });
+                var start = +new Date()
+                bf.run(document.getElementById('code').value)
+                document.getElementById('time').textContent = (+new Date() - start)+"ms"
+            }
+        </script>
+    </head>
+    <body>
+        <textarea id="code" rows=15 cols=70>
+++++++++++[>+++++++>++++++++++>+++>+<<<<-]
+>++.>+.+++++++..+++.                           Hello
+>++.
+<<+++++++++++++++.>.+++.------.--------.>+.>.  World!
+        </textarea>
+        <br><button onclick="execute()">execute</button>
+        <span id="time"></span>
+        <p id="output"></p>
+    </body>
+</html>

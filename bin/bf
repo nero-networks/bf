@@ -1,0 +1,16 @@
+#!/usr/bin/env coffee
+fs = require 'fs'
+Bf = require '../lib/interpreter'
+
+## create an interpreter for stdio
+bf = new Bf
+    read: ->
+        c = Buffer.alloc 1
+        fs.readSync stdin, c, 0, 1
+        return c[0]
+
+    write: (c)->
+        process.stdout.write String.fromCharCode c
+
+## read the code from file and execute it
+bf.run fs.readFileSync(process.argv[2]).toString()

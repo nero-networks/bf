@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "name": "brainfuck",
+  "description": "A Brainfuck interpreter written in coffeescript",
+  "scripts": {
+    "build": "coffee -bco bf.js ./lib/interpreter.coffee"
+  },
+  "author": "",
+  "license": "MIT"
+}
