@@ -3,6 +3,7 @@ fs = require 'fs'
 Bf = require '../lib/interpreter'
 
 ## create an interpreter for stdio
+stdin = fs.openSync('/dev/stdin', 'rs')
 bf = new Bf
     read: ->
         c = Buffer.alloc 1
